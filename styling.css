@@ -1,0 +1,766 @@
+html,
+body{
+	margin: auto;
+	padding: 0;
+
+  box-sizing:border-box;
+}
+
+
+body{
+  background-color:white; /*to set background on page to white*/
+  font-family: 'Lato', sans-serif;
+  font-weight:bold;
+  text-align:center;
+  color:3c3c3c; 
+  font-size:18px;
+}
+
+h1,h2,h3{
+	color:014d4e;
+}
+
+h2{ /*headings in sections*/
+	padding-top:5px; 
+	padding-bottom:5px;
+}
+
+
+/*nav bar*/
+header {
+  position: top;
+  left: 0;
+  right: 0;
+  background-color: #eafaff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+  padding: 0px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+header .menu { /*hamburger menu for smaller screens*/
+  font-weight: bolder;
+  font-size: 25px;
+  color: #014d4e;
+}
+
+header .nav { /*nav bar to be on top of slider*/
+  z-index:100px;
+}
+
+header .nav ul {
+  list-style: none;
+  z-index:100px;
+}
+
+header .nav ul li {
+  position: relative; 
+  float: left; /*for nav links to be horizontal*/
+}
+
+header .nav ul li a { /*styling nav bar links*/
+  font-size: 19px;
+  padding: 15px;
+  color: #014d4e;
+  display: block;
+}
+
+header .nav ul li a:hover { /*hover effects for nav links*/
+  text-decoration: underline;
+  color: #3CBCBC;
+}
+
+header .nav ul li ul { /*sub nav links*/
+  position: absolute;
+  left: 0;
+  width: 200px;
+  background-color: #eafaff;
+  display: none; /*for sub nav to not be visible*/
+  z-index:1000;
+  flex-direction: column; /*for sub nav options to be below one another*/
+}
+
+header .nav ul li ul li a{
+  z-index:1000;
+}
+
+header .nav ul li ul li {
+  width: 100%;
+  margin-bottom:0;  /*sub nav links*/
+}
+
+header .nav ul li:hover > ul,
+header .nav ul li:focus-within > ul,
+header .nav ul li ul li:hover > ul,
+header .nav ul li ul li:focus-within > ul {
+  display:flex;  /*to display sub nav when other hatcheries is hovered*/
+}
+
+#menubar {
+  display: none;  /*to hide hamburger menu in larger screens*/
+}
+
+header label {  /*to style menu button in hamburger menu*/
+  font-size: 20px;
+  color: #014d4e;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 991px) {  /*to display hamburger menu for smaller screens*/
+  header {
+    padding: 20px;
+  }
+
+  header label {
+    display: initial; /*to display hamburger menu for smaller screens*/
+  }
+
+  header .nav {
+    position: relative;
+    background:#eafaff;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    display: none;
+  }
+
+  header .nav ul li {
+    width: 100%;
+  }
+
+  header .nav ul li ul {
+    position: relative;
+    width: 100%;
+  }
+
+  header .nav ul li ul li {
+    background-color: #eafaff;
+  }
+
+
+  #menubar:checked~.nav {
+    display: block; /*the hamburger menu width will be the width of the container*/
+  }
+}
+
+.container{ /*z-index to slider so that the nav is visible on top of the slider*/
+  z-index:10px;
+}
+
+.slider { /*slide show for banner*/
+  width: 100%;
+   height:auto;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index:10px;
+}
+
+
+.slider figure {
+  margin: 0;
+  padding: 0;
+  width: 500%;
+  position: relative;
+  animation: 20s slider infinite; /*for slide show to be 20s long and repeat continuously*/
+  z-index:10px;
+}
+
+.slider img {
+  width: 20%;
+  float: left;
+  height:auto;
+  z-index:10px;
+}
+
+
+@keyframes slider {
+  0% {
+    left: 0; /*1st img shown at its normal position (on the left)*/
+  }
+  20% {
+    left: 0; /*20% of time show the images stays the same*/
+  }
+  25% {
+    left: -100%;  /*1st img moves at 25% of the time*/
+  }
+  45% {
+    left: -100%; /*1st img moves 100% to the left*/
+  }
+  50% {
+    left: -200%; /* 2nd img starts to move*/
+  }
+  70% {
+    left: -200%; /*2nd img stops 200% to the left at 70% of the time */
+  }
+  75% {
+    left: -300%; 
+  }
+  95% {
+    left: -300%; 
+  }
+  100% {
+    left: -400%; 
+  }
+}
+
+.intro{ /*for intro para in home pg*/
+	margin:45px;
+}
+
+
+.visit{ /*padding for the two links that lead to kosgoda and bentota hatchery in threats to turtle pg*/
+	padding-bottom:20px;
+}
+
+
+.center{ /*center images */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+
+.banner { /*add and style banner */
+	width: 100%;
+	height: 500px;
+	background-color: white;
+}
+
+/*for social media icons in footer*/
+.media{
+  display: flex;
+  align-items: center;
+}
+
+.media a {
+  display: inline-block;
+  margin-right: 10px; /* margin between social icons */
+  text-decoration: none;
+}
+
+.media img {
+  width: 30px; /* the width and height of social icons */
+  height: 30px;
+}
+
+
+
+/*product list in purchase and donate pg*/
+.products {
+  list-style: none;
+  justify-content: center;
+  background-color:white;
+  display:flex;
+  flex-wrap:wrap; /*for the items to wrap to next line when width is less*/
+  margin:0;
+  padding:0;
+  float:left;
+}
+
+.pro{ /*for purchase and donate pg*/
+  background-color:#FFFEFA;
+  box-shadow: 0 5px 8px 5px rgba(0,0,0,0.2);
+  border-radius:9px;
+  padding-bottom:25px;
+  transition: transform 0.3s ease; /*to enlargen box on hover*/
+  padding:10px;
+  margin:10px;
+  flex:0 0 300px; /*for each item to have a fixed width*/
+  align-items:center;
+	 
+}
+
+
+.pro:hover {
+  transform: scale(1.07); /*to enlargen box 1.07 times on hover*/
+}
+
+
+.products li { /* for the products*/
+  text-align: center;
+  margin: 20px;
+}
+
+.products img { /*product images*/
+  width: 100%;
+  height: auto;
+  max-width:200px;
+  max-height:250px;
+}
+
+.products h3 {
+  margin-top: 10px;
+}
+
+.products p {
+  font-weight: bold;
+  color: #333;
+  width:100%;
+  padding-bottom:7px;
+} 
+
+.products a{ /*buy now link styling*/
+	background-color:#3CBCBC;
+	color:white;
+	border-radius:4px;
+	padding: 10px 20px;
+}
+
+@media (max-width: 768px){
+	.pro{
+		flex-basis:100%;   /*to show each product as one column in small screens*/
+	}
+}
+
+
+/*to style donations in purchase and donate pg*/
+.donate {
+  background-color:#FFFEFA;
+  padding-bottom: 0px;
+  border-radius:8px;
+   box-shadow: 0 5px 8px 5px rgba(0,0,0,0.2);
+}
+
+.donate:hover{
+	  transform: scale(1.05); /*to enlargen box 1.05 times on hover*/
+}
+
+.don { /*for the donations to be in a flex so it would be rsponsive*/
+  display: flex;
+  flex-wrap:wrap;
+  text-align: center;
+}
+
+.dname{
+font-size:20px;	
+}
+
+.donpara{
+	font-family: 'Lato', sans-serif;
+	font-size:18px;
+	line-height:20px;
+	text-align:justify;
+	color:rgb(63,62,62);
+	padding-left:55px;
+	padding-top:60px;
+}
+
+.donbutton{ /*donate button*/
+	background-color:#3CBCBC;
+	color:white;
+	border-radius:4px;
+	padding: 7px 7px;
+}
+
+
+.donimg{ /*donate img styling*/
+	padding-top:15px;
+	margin:auto;
+}
+
+
+@media screen and (min-width: 768px) {  /* to make donations responsive */
+  .donate{
+    margin: 30px;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .donate{
+    margin: 50px;
+    padding-bottom: 20px;
+  }
+}
+
+
+
+/*to add bar with logo and social media*/
+.top-section {
+	width:device-width;
+  background-color: #f3f9fb;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  height:40px;
+}
+
+.logo {
+  width: 150px; 
+  margin-right: 10px; 
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.socials{ /*social icons in he header*/
+	  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 30px;
+  font-size:25px;
+}
+
+
+.lists{ /*to center the lists */
+list-style-position: inside;
+text-align:center;
+}
+
+a{
+color:#3CBCBC; /*for the color of the hyperlinks including quick links on footer*/
+text-decoration:none;
+}
+a:hover{
+	text-decoration: underline;
+}
+
+
+/*footer stylings*/
+footer {
+  background-color: #eafaff;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 30px 20px;
+}
+
+.footer h3 {
+  text-align: center;
+}
+
+.footer img {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+/*social icons stylings in footer*/
+.social-icons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.social-icons a {
+  text-decoration: none;
+  padding: 10px;
+  background-color: teal;
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.social-icons a i {
+  font-size: 20px;
+  color: white;
+  opacity: 0.9;
+}
+
+.social-icons a:hover {
+  background-color:	#87CEEB;
+}
+
+.quicklinks {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.quicklinks a:hover{
+  color:#87CEEB;
+}
+
+
+/* Responsive footer*/
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer h3 {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .quicklinks {
+    text-align: left;
+    padding-right: 0;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+    padding-right: 0;
+    margin-top: 20px;
+  }
+}
+
+
+.table-container { /*to center the table in turtle categories page*/
+width:100%;
+max-width:900px;
+overflow-x: auto; /*to add a scroll bar when screen width is small*/
+margin:0 auto;
+padding-bottom:30px;
+}
+
+.table-container tfoot td{
+	text-align:right;
+	color:grey;
+}
+
+td{
+	padding:10px;
+}
+
+.b, th{
+	font-size:18px;
+  background-color: #eaf5f9; /*color for cloumn and row labels*/
+}
+
+
+#c{
+  background-color: #f3fafd; /*color for top & bottom rows */
+}
+
+#d,
+tfoot tr td{
+  background-color: #FAFBFF; /*color for middle row & table footer*/
+}
+
+table {
+	  border-collapse: collapse; /*for table border line to be one line*/
+    border-color: #969699;
+font-weight:bold;
+width:100%;
+}
+
+td{
+background:white; /*white for background in table*/
+}
+
+
+
+.list{
+	text-align:center;
+	list-style-position: inside;
+}
+
+.listz{ /* to center the lists in hikkaduwa hatchery page*/
+list-style-position: inside;
+text-align:center;
+}
+
+/*for coloured sections in home,about us and threats to turtles pg*/
+.sec1 {
+  background-color: #f3f9fb;
+  padding-bottom: 20px;
+  margin:50px 25px; /*top & bottom 50px and right & left 25px*/
+}
+
+.sec2 {
+  background-color: #eaf5f9;
+  padding-bottom: 20px;
+  margin:50px 25px;
+}
+
+.containersec{
+	max-width:950px;
+	margin:0 auto;
+}
+
+.subsec {
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:space-between; /*for items to be aligned accordingly with equal space in between*/
+}
+
+.para{
+	font-family: 'Lato', sans-serif;
+	font-size:16px;
+	line-height:20px;
+	color:rgb(63,62,62);
+	flex-basis:60%; /*set items size to 60%*/
+	text-align:left;
+	padding-left:20px;
+}
+
+.images{
+	flex-basis:35%;
+	margin-top:20px;
+	text-align:right;
+}
+
+.images img{
+		max-width:100%;
+	height:auto;
+}
+
+
+
+@media (max-width: 768px) {  /* to make coloured sections responsive responsive */
+	.subsec{
+		flex-direction:column;
+	}
+	
+	.para,
+	.images{
+		flex-basis:100%;
+		text-align:left;
+	}
+}
+
+/*to add padding to map in hikkaduwa pg*/
+.hikmap{
+	padding-bottom:20px;
+		max-width:100%;
+	height:350px;
+}
+
+/*for the turtles catgeories pg coloured section*/
+.grid-container{
+	background-color:#f3f9fb;  
+  padding:30px;
+}
+
+.grid-container2 {
+	background-color:#eaf5f9;  
+   padding:30px;
+}
+
+.grid-container-main{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  font-family: 'Lato', sans-serif;
+  font-size:16px;
+  text-align:center;
+}
+
+.column1{
+  display: flex;
+  flex-direction: column;
+}
+
+.column1,
+.column2,
+.column3 {
+   padding-bottom:25px;
+  padding-top:10px;
+  text-align:left;
+}
+
+.column1{
+  flex-basis:100%;
+  max-width:100%;
+}
+
+.column2,
+.column2 {
+  flex-basis:calc(50% -10px);
+  max-width:calc(50% -10px);
+}
+
+iframe{
+  width:100%;
+}
+
+/*media queries to make turtle categories pg responsive*/
+@media (max-width: 768px) {
+  .grid-container-main {
+    grid-template-columns: 1fr;
+  }
+
+  .column2,
+  .column3 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width:415px) {
+  .grid-container-main{
+    grid-template-columns: 1fr;
+  }
+
+  .column2,
+  .column3{
+    flex-basis:100%;
+    max-width:100%;
+  }
+
+  .grid-container-main p{
+    padding-right:10px;
+  }
+
+  .grid-container-main img{
+    width:320px;
+    height:200px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width:320px) {
+  .grid-container-main{
+    grid-template-columns: 1fr;
+  }
+
+  .column2,
+  .column3{
+    flex-basis:100%;
+    max-width:100%;
+  }
+
+  .grid-container-main p{
+    padding-right:10px;
+  }
+
+  .grid-container-main img{
+    width:250px;
+    height:150px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width:480px){
+  .grid-container{
+    padding:20px;
+  }
+
+  .grid-container2{
+    padding:0px;
+  }
+
+  .grid-container-main{
+    gap:10px;
+    font-size:14px;
+  }
+}
+
+
+/*for hikkaduwa hatchery list colored section*/
+.cl{
+	background-color:#f3f9fb; 
+	margin:50px 25px;
+}
+
+.cl h3{
+padding-top:15px;
+padding-bottom:20px;
+}
