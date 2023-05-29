@@ -28,6 +28,8 @@ header {
   z-index: 1000;
 }
 
+
+
 header .nav {
   z-index:100px;
 }
@@ -128,6 +130,7 @@ header label {
     display: block;
   }
 }
+
 
 /*to add bar with logo and social media*/
 .top-section {
@@ -289,15 +292,16 @@ video {
 	padding:0;
 	float:left;
 	background-color:white;
-	max-width:100%;
+  max-width:100%;
 }
 
-li .sec1{
+li.sec1{
 	background-color:#ececec;   
 	padding-bottom:20px;
 	padding:10px;
 	margin:10px;
-	flex:0 0 350px;    
+  max-width: calc(100% - 20px);
+  flex:0 0 350px;     
 	align-items:center;
 }
 
@@ -324,7 +328,7 @@ font-family: 'Quicksand', sans-serif;
 @media (max-width: 768px) {  /* to make coloured sections responsive responsive */
 	.sec1{
 		flex-basis:100%;
-		max-width:100%;
+    max-width:100%;
 	}
 }
 
