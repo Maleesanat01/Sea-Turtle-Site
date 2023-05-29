@@ -131,66 +131,6 @@ header label {
   }
 }
 
-
-
-
-/*.nav-menu {
-  list-style: none;
-  margin: 0;
-  padding: 20px;
-  background-color:black;
-   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.nav-menu > li {
-  display: inline-block;  /*the nav bar links to be in one line
-  position: relative;
-}
-
-.nav-menu > li > a {
-	color: white;  /*to style links on nav bar
-  display: block;
-  padding: 10px;
-  text-decoration:none;
-}
-
-.sub-menu {
-  display: none; /* Hide the sub-menu by default 
-  position: absolute;
-  top: 100%;
-  left: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background-color:black;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    z-index:20;
-}
-
-.nav-menu > li>a:hover{
-	color:#acbda1;
-  text-decoration:underline;
-}
-
-.nav-menu > li:hover > .sub-menu {
-  display: block; /* Show the sub-menu when the user hovers over the main menu item 
-}
-
-.sub-menu > li > a {
-  display: block;
-  padding: 10px;
-  color: white;
-  text-decoration: none;
-}
-
-.sub-menu > li > a:hover {
-  background-color:466238;
-}
-
-
-
-
 /*to add bar with logo and social media*/
 .top-section {
 	width:device-width;
