@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<head> 
+<title>Details</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <!--for social media icons-->
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"> <!--for font-->  
+<link rel="stylesheet" href="styling.css"> <!--link to styling sheet -->
+<script src="https://unpkg.com/alpinejs" defer></script>
+	
+<script src="ticket.js"></script>
+<script src="details.js"></script>
+	<!--country flag-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+
+</head>
+
+<div class="tickets-top">
+    <h1>Buy Tickets</h1>
+</div>
+
+
+      <!--nav bar with hamburger menu> <-->
+  <header>
+  
+    <input type="checkbox" id="menubar">
+    <label for="menubar">Menu</label>
+  
+    <nav class="nav">
+      <ul>
+        <li><a href="Turtleweb.html">Home </a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="details.html">Details</a></li>
+        <!--li><a href="payment.html">Payment</a></li>
+        <li><a href="confirmation.html">Confirmation</a></li-->
+      </ul>
+    </nav>
+  </header>
+
+
+  <body>
+  
+  <div class="flex-container">
+    <div class="details-section">
+      <h2>Enter your details </h2>
+  <div x-data="CustomerDetails()" x-init="loadDetails">
+    <form x-on:submit.prevent="Continue">
+    <h3>Full Name (*required*)</h3>
+    <input type="text" x-model="name" x-on:input="saveDetails" required>
+    <br>
+
+    <h3>Email (*required*)</h3>
+    <input type="text" x-model="email" x-on:input="saveDetails" required x-bind:pattern="emailPattern">
+    <br>
+
+    <h3>Confirm Email (*required*)</h3>
+    <input type="email" x-model="confirmEmail" x-on:input="validateEmail" required x-bind:pattern="emailPattern">
+    <br>
+    <span x-show="showError" class="error-message">Emails do not match</span>
+    <br>
+
+     <!--Mobile Number-->
+     <h3>Enter Mobile Number (*required*)</h3>
+     <div class="container">
+      <input type="text" id="phone" class="phone-input" x-init="loadDetails" x-on:keydown="restrictNonNumeric" x-on:input.debounce="saveDetails" required>
+    </div>
+    <br>
+
+    <h3>Select Gender (optional)</h3>
+    <select id="Gender" x-model="gender" x-on:change="saveDetails">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <br>
+    <button type="submit" id="Continue">Continue with purchase</button>
+  </form>
+  </div>
+</div>
+
+<div class="table-section">
+  <h3>Booking Summary</h3>
+  <hr>
+  <div x-data="tickets" class="tickets-container">
+      <div class="tickets-table">
+      <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th  x-text="localStorage.getItem('date')"></th>
+        </tr>
+        <tr>
+          <th>Time</th>
+          <td class="timez"><template x-for="timeIndex in JSON.parse(localStorage.getItem('selectedTimeSlots'))">
+            <div x-text="Times[timeIndex].title"></div>
+          </template>
+           </td>
+        </tr>
+        <tr>
+          <th>Duration</th>
+          <th x-text="localStorage.getItem('TimeDuration') + ' Hrs'"></th>
+        </tr>
+      </thead>
+    
+    
+      <tbody>
+        <tr class="ticketsRow">
+          <th>Tickets</th>
+          <th>Charges (USD)</th>
+        </tr>
+
+        <tr class="hr-in-recieptTable">
+          <td><hr></td>
+          <td><hr></td>
+        </tr>
+
+    
+        <template x-for="(Guest, index) in JSON.parse(localStorage.getItem('Guests'))" :key="index">
+          <tr class="reciept-table-guest">
+              <td>
+                <span x-text="Guest.name"></span>
+                <span x-text="Guest.count"></span>
+              </td>    
+              <td>
+                <span x-text="Guest.total"></span>
+              </td>
+          </tr>
+        </template>
+      </tbody>
+    
+      <tfoot>
+        <tr>
+          <td><hr></td>
+          <td><hr></td>
+        </tr>
+        <tr>
+          <td>Total Payable</td>
+          <td><span x-text="localStorage.getItem('totalPrice')"></span></td>
+        </tr>
+      </tfoot>
+    </table>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <br> <br> <br> 
+
+  </body>
+
+
+
+<footer>
+    <div class="footer">
+        <img src="turtleimages/logo.jpg" height="60px" alt="Logo">
+         <div class="social-icons">
+           <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+           <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+           <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a> 
+           
+         </div>
+         
+         <div>
+         <h3>Quick Links</h3>
+           <ul class="quicklinks">
+             <li><a href="Turtleweb.html">Home</a></li>
+             <li><a href="hikkaduwahatchery.html">Hikkaduwa Hatchery</a></li>
+             <li><a href="bentotahatchery.html">Bentota Hatchery</a></li>
+             <li><a href="kosgodahatchery.html">Kosgoda Hatchery</a></li>
+             <li><a href="purchaseanddonate.html">Purchase & Donate</a></li>
+             <li><a href="aboutus.html">About Us</a></li>
+           </ul>
+         </div>
+       </div>
+       © Turtles In Sri Lanka 2023.
+</footer>
+ </html>
+ 

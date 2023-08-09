@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html>
+ 
+<head> 
+   <title>Tickets</title>
+      <meta charset="UTF-8">
+      <meta name=viewport content="width=device-width,initial-scale=1">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <!--for social media icons-->
+      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"> <!--for font-->  
+      <link rel="stylesheet" href="styling.css"> <!--link to styling sheet -->
+      <script src="https://unpkg.com/alpinejs" defer></script>
+      <script src="ticket.js"></script>
+      <!--script src="date.js"></script>
+      <script src="time.js"></script-->
+</head>
+
+
+<div class="tickets-top">
+    <h1>Buy Tickets</h1>
+</div>
+
+
+
+      <!--nav bar with hamburger menu> <-->
+  <header>
+  
+    <input type="checkbox" id="menubar">
+    <label for="menubar">Menu</label>
+  
+    <nav class="nav">
+      <ul>
+        <li><a href="Turtleweb.html">Home </a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <!--li><a href="details.html">Details</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="confirmation.html">Confirmation</a></li-->
+      </ul>
+    </nav>
+  </header>
+
+  <body>
+  <div x-data="tickets"> 
+    <div class="flex-container-ticketspg">
+    <div class="tickets-input left-align"> 
+      <h2>Book Tickets</h2>
+        <div>
+            <h3>Select a Date</h3>
+            <input type="date" name="date" id="date" x-model="date" x-init="disablePastDate()">
+        </div>
+
+        <div x-show="date">
+            <h3 for="timeslot">Select a Time</h3>
+            <div>
+                <button x-on:click="showTimes = !showTimes">
+                    <span x-show="!showTimes">Show Times</span>
+                    <span x-show="showTimes">Hide Times</span>
+                </button>
+                <ul class="timesDropdown">
+                    <template x-for="(timeSlot, index) in Times" :key="index">
+                        <li x-show="showTimes || selectedTimeSlots.includes(index)"
+                            x-bind:style="timeSlot.isPeak ? 'background:#eaf5f9' : 'background:#FAFBFF'"
+                            x-on:click="selectTimeSlot(index)">
+                            <label :for="timeSlot.title" x-text="timeSlot.title" style="cursor: pointer;"></label>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+
+        <div x-show="selectedTimeSlots.length">
+          <h3 for="Guest">Add guests</h3>
+          <template x-for="(Guest, index) in Guests" :key="index">
+              <div>
+                  <label x-bind:for="Guest.name" x-text="Guest.name"></label>
+                  <div>
+                    <button type="button" class="add-sub-button"
+                        x-on:click="Guests[index].count = (Guests[index].count - 1 > 0 ? Guests[index].count - 1 : 0); calculate(Guests[index])">-</button>
+                    <input type="number" x-model="Guests[index].count"  style="width: 50px;" />
+                    <button class="add-sub-button"
+                        x-on:click="Guests[index].count = Guests[index].count + 1; calculate(Guests[index])">+</button>
+                </div>
+              </div>
+          </template>
+        </div>
+
+        <div class="price-container">
+          <h3 id="priceHeading">Price table</h3>
+          <div class="price-table">
+             <table border="1">
+               <thead>
+                 <tr>
+                   <th>Guest Category</th>
+                   <th>Normal Hour Charge (USD)</th>
+                   <th>Peak Hour Charge (USD)</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td>Foreigner Adult</td>
+                   <td>10</td>
+                   <td>13</td>
+                 </tr>
+                 <tr>
+                   <td>Foreigner Child</td>
+                   <td>5</td>
+                   <td>8</td>
+                 </tr>
+                 <tr>
+                   <td>Sri Lankan Adult</td>
+                   <td>4</td>
+                   <td>6</td>
+                 </tr>
+                 <tr>
+                   <td>Sri Lankan Child</td>
+                   <td>2</td>
+                   <td>3</td>
+                 </tr>
+                 <tr>
+                   <td>Infant</td>
+                   <td>Free</td>
+                   <td>Free</td>
+                 </tr>
+               </tbody>
+             </table>
+          </div>
+        </div>
+        <button type="button" id="Continue" x-on:click="Continue" >Continue with purchase</button>
+    </div>
+     
+
+    <div class="table-section">
+      <h3>Booking Summary</h3>
+      <hr>
+      <div class="tickets-container">
+      <div class="tickets-table">
+      <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th  x-text="date"></th>
+        </tr>
+        <tr>
+          <th>Time</th>
+          <td class="timez"><template x-for="timeIndex in selectedTimeSlots"> <!--selected time-->
+            <div x-text="Times[timeIndex].title"></div> <!--time-->
+        </template> </td>
+        </tr>
+        <tr>
+          <th>Duration</th>
+          <th x-text="selectedTimeSlots.length + ' Hrs'"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="ticketsRow">
+          <th>Tickets</th>
+          <th>Charges (USD)</th>
+        </tr>
+
+        <tr class="hr-in-recieptTable">
+          <td><hr></td>
+          <td><hr></td>
+        </tr>
+
+        <template x-for="(Guests, Guests.count) in Guests" :key="index" class="guest-name-table">
+          <tr class="reciept-table-guest">
+              <td>
+                <span x-text="Guests.name"></span>
+                x(
+                <span x-text="Guests.count"></span>
+                )
+              </td>    
+              <td>
+                <span x-text="Guests.total"></span>
+              </td>
+          </tr>
+        </template>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td><hr></td>
+          <td><hr></td>
+        </tr>
+        <tr>
+          <td>Total Payable</td>
+          <td><span x-text="totalPrice"></span></td>
+        </tr>
+      </tfoot>
+    </table>
+    </div>
+    <!--button type="button" id="Continue" x-on:click="Continue" >Continue with purchase</button-->
+    </div>
+    </div>
+    </div>
+    </div>
+    <br><br>
+    
+</div>
+
+
+
+</body>
+<br><br><br>
+
+
+<footer>
+    <div class="footer">
+        <img src="turtleimages/logo.jpg" height="60px" alt="Logo">
+         <div class="social-icons">
+           <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+           <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+           <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a> 
+           
+         </div>
+         
+         <div>
+         <h3>Quick Links</h3>
+           <ul class="quicklinks">
+             <li><a href="Turtleweb.html">Home</a></li>
+             <li><a href="hikkaduwahatchery.html">Hikkaduwa Hatchery</a></li>
+             <li><a href="bentotahatchery.html">Bentota Hatchery</a></li>
+             <li><a href="kosgodahatchery.html">Kosgoda Hatchery</a></li>
+             <li><a href="purchaseanddonate.html">Purchase & Donate</a></li>
+             <li><a href="aboutus.html">About Us</a></li>
+           </ul>
+         </div>
+       </div>
+       © Turtles In Sri Lanka 2023.
+</footer>
+ </html>
+
+  

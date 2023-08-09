@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<head> 
+<title>Payment</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <!--for social media icons-->
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"> <!--for font-->  
+<link rel="stylesheet" href="styling.css"> <!--link to styling sheet -->
+<script src="payment.js"></script>
+<script src="ticket.js"></script>
+
+ <!-- Alpine Plugins for input mask -->
+ <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+ <!-- Alpine Core -->
+ <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+ 
+ <!--script src="https://unpkg.com/alpinejs" defer></script-->
+</head>
+
+<div class="tickets-top">
+    <h1>Buy Tickets</h1>
+</div>
+
+
+      <!--nav bar with hamburger menu> <-->
+  <header>
+  
+    <input type="checkbox" id="menubar">
+    <label for="menubar">Menu</label>
+  
+    <nav class="nav">
+      <ul>
+        <li><a href="Turtleweb.html">Home </a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="details.html">Details</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <!--li><a href="confirmation.html">Confirmation</a></li-->
+      </ul>
+    </nav>
+  </header>
+
+  <body>
+
+  <div class="flex-container">
+    <div class="details-section">
+    <h2>Payment Details</h2>
+
+    <div x-data="payDetails" x-init="loadPayDetails">
+      <form x-on:submit.prevent="Continue">
+      <h3>Name on card</h3>
+      <input type="text" x-model="nameOnCard" x-on:input="savePayDetails" required pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed">
+      <br>
+
+      <h3>Card number</h3>
+      <input type="text" x-model="cardNum" x-mask="9999-9999-9999-9999" placeholder="9999-9999-9999-9999" x-on:input="savePayDetails" required>
+      <br>
+
+      <h3>Expiry date</h3>
+      <input type="text" x-model="ExpireDate" x-mask="99/99" placeholder="MM/YY" x-on:blur="validateAndSaveExpireDate" x-on:keydown.enter="validateAndSaveExpireDate" required>
+      <div x-show="invalidExpiryDate" class="error-message">Invalid expiry date</div>
+      <br>
+
+      <h3>CVC/CVV</h3>
+      <input type="text" x-model="cvc" x-mask="999" placeholder="XXX" x-on:input="savePayDetails" required>
+      <br> 
+      <button type="submit" id="Continue">Pay $<span x-text="localStorage.getItem('totalPrice')"></span></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="table-section">
+    <h3>Booking Summary</h3>
+    <hr>
+    <div x-data="tickets">
+      <div class="tickets-container">
+        <div class="tickets-table">
+        <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th  x-text="localStorage.getItem('date')"></th>
+          </tr>
+          <tr>
+            <th>Time</th>
+            <td class="timez"><template x-for="timeIndex in JSON.parse(localStorage.getItem('selectedTimeSlots'))">
+              <div x-text="Times[timeIndex].title"></div>
+            </template>
+             </td>
+          </tr>
+          <tr>
+            <th>Duration</th>
+            <th x-text="localStorage.getItem('TimeDuration') + ' Hrs'"></th>
+          </tr>
+        </thead>
+      
+      
+        <tbody>
+          <tr class="ticketsRow">
+            <th>Tickets</th>
+            <th>Charges (USD)</th>
+          </tr>
+
+          <tr class="hr-in-recieptTable">
+            <td><hr></td>
+            <td><hr></td>
+          </tr>
+  
+      
+          <template x-for="(Guest, index) in JSON.parse(localStorage.getItem('Guests'))" :key="index">
+            <tr class="reciept-table-guest">
+                <td>
+                  <span x-text="Guest.name"></span>
+                  <span x-text="Guest.count"></span>
+                </td>    
+                <td>
+                  <span x-text="Guest.total"></span>
+                </td>
+            </tr>
+          </template>
+        </tbody>
+      
+        <tfoot>
+          <tr>
+            <td><hr></td>
+            <td><hr></td>
+          </tr>
+          <tr>
+            <td>Total Payable</td>
+            <td><span x-text="localStorage.getItem('totalPrice')"></span></td>
+          </tr>
+        </tfoot>
+      </table>
+      </div>
+      </div>
+    </div>
+      <br><br>
+      </div>
+
+
+
+
+    <br> <br>
+  </div>
+
+
+</body>
+<br> <br> <br>
+
+
+
+<footer>
+    <div class="footer">
+        <img src="turtleimages/logo.jpg" height="60px" alt="Logo">
+         <div class="social-icons">
+           <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+           <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+           <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a> 
+           
+         </div>
+         
+         <div>
+         <h3>Quick Links</h3>
+           <ul class="quicklinks">
+             <li><a href="Turtleweb.html">Home</a></li>
+             <li><a href="hikkaduwahatchery.html">Hikkaduwa Hatchery</a></li>
+             <li><a href="bentotahatchery.html">Bentota Hatchery</a></li>
+             <li><a href="kosgodahatchery.html">Kosgoda Hatchery</a></li>
+             <li><a href="purchaseanddonate.html">Purchase & Donate</a></li>
+             <li><a href="aboutus.html">About Us</a></li>
+           </ul>
+         </div>
+       </div>
+       © Turtles In Sri Lanka 2023.
+</footer>
+ </html>

@@ -2,7 +2,6 @@ html,
 body{
 	margin: auto;
 	padding: 0;
-
   box-sizing:border-box;
 }
 
@@ -12,12 +11,12 @@ body{
   font-family: 'Lato', sans-serif;
   font-weight:bold;
   text-align:center;
-  color:3c3c3c; 
+  color:#3c3c3c; 
   font-size:18px;
 }
 
 h1,h2,h3{
-	color:014d4e;
+	color:#014d4e;
 }
 
 h2{ /*headings in sections*/
@@ -186,7 +185,7 @@ header label {  /*to style menu button in hamburger menu*/
     left: -100%;  /*1st img moves at 25% of the time*/
   }
   45% {
-    left: -100%; /*1st img moves 100% to the left*/
+    left: -100%; /*1st img moves 100% to the left & 2nd img is shown*/
   }
   50% {
     left: -200%; /* 2nd img starts to move*/
@@ -411,7 +410,7 @@ font-size:20px;
 
 
 .lists{ /*to center the lists */
-list-style-position: inside;
+list-style-position: inside; /*position bullet points*/
 text-align:center;
 }
 
@@ -544,8 +543,8 @@ tfoot tr td{
 table {
 	  border-collapse: collapse; /*for table border line to be one line*/
     border-color: #969699;
-font-weight:bold;
-width:100%;
+    font-weight:bold;
+    width:100%;
 }
 
 td{
@@ -675,7 +674,7 @@ justify-content:space-between; /*for items to be aligned accordingly with equal 
   max-width:calc(50% -10px);
 }
 
-iframe{
+iframe{ /*for map*/
   width:100%;
 }
 
@@ -764,3 +763,313 @@ iframe{
 padding-top:15px;
 padding-bottom:20px;
 }
+
+.tickets-top{
+  background-color:teal;
+  height:auto;
+}
+
+.tickets-top h1{
+  padding:20px;
+  color:white;
+  font-weight: 500;
+}
+
+.tickets-top {
+  display: flex;
+  align-items: center;
+}
+
+.homelink {
+  display: inline; 
+  margin-right: auto; /*Home link to the left */
+}
+
+.ticketsPgs{ /*CONFIRMATION PG*/
+  text-align: left;
+  margin-left: 70px;
+}
+
+input[type="date"]{ /*to style the date input field in tickets pg*/
+  font-family: 'Lato', sans-serif;
+  color:#3c3c3c; 
+  font-weight: bold;
+  font-size:18px;
+}
+
+button{
+  border-radius: 50px;
+  font-size: 16px;
+  color: #014d4e;
+  background-color: #F0F0F0;
+}
+
+#Continue{
+  background-color:  #009999;
+  color:#eaf5f9;
+  padding:10px;
+  border-radius:5px;
+}
+
+#Duration{
+  font-family: 'Lato', sans-serif;
+  color:#3c3c3c; 
+  font-size:15px;
+}
+
+#Gender{
+  font-family: 'Lato', sans-serif;
+  color:#3c3c3c; 
+  font-size:15px;
+  font-weight: 600;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+#priceHeading{
+  text-align: left;
+  padding-bottom: 0px;
+}
+
+
+.price-container{
+  align-items: left;
+  padding-bottom: 10px;
+  max-width: 350px;
+  margin:0;
+}
+
+/*TICKETS PG FLEX*/
+.flex-container-ticketspg{
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  gap:30px;
+
+  /*background-position:center;
+	background-size:cover;
+	background-image:url(turtleimages/ticketsbgImg.jpg);  /*to add a fixed background image*
+	background-attachment:fixed;*/
+}
+
+
+/*FLEX FOR DETAILS,PAYMENT PGS*/
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  gap:30px;
+}
+
+/* Styles for the details section */
+.details-section {
+  padding: 20px;
+  flex: 1; 
+  text-align: left;
+  max-width:400px;
+  margin-left: 45px;
+  /*background-color: #F5F5F4;*/
+}
+
+/*summary table for all pgs except conirmation pg*/
+.table-section { 
+  background-color: #F5F5F4;
+  padding: 20px;
+  flex: 1; 
+  max-width: 370px;
+  margin: 50px auto 0; 
+  height: 600px;
+}
+
+
+.tickets-table {
+  max-width: 400px;
+}
+
+/*tickets pg responsive*/
+@media (max-width: 768px) {
+  .price-container {
+    width: 100%; 
+  }
+
+  .flex-container-ticketspg {
+    flex-direction: column; 
+    gap: 15px;
+  }
+
+  /*details & payment pg*/
+  .flex-container { 
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .details-section {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+
+  .table-section {
+    max-width: 100%; 
+    margin: 25px auto 0;
+    height: auto; 
+    margin-left:20px;
+    margin-right: 20px;
+  }
+
+  .tickets-table {
+    max-width: 100%; 
+  }
+}
+
+
+.tickets-table table thead tr th {
+  background-color: transparent;   /*#FAFBFF;*/
+  text-align: left; /* Align text to the left in header cells */
+  padding-left: 7px;
+}
+
+.timez{
+  text-align: left;
+  background-color: transparent;
+}
+
+.reciept-table-guest td{
+  background-color: transparent;
+}
+
+.hr-in-recieptTable td{
+  background-color: transparent;
+}
+
+.tickets-table table tbody tr td span {
+  text-align: left; /* Align text to the left in data cells */
+}
+
+
+.tickets-table table tfoot tr td {
+  text-align: left; /* Align text to the left in footer cells */
+}
+
+.ticketsRow th {
+  background-color: transparent;    /*#eaf5f9;*/
+  text-align: left; /* Align text to the left in "Tickets" and "Charges" header cells */
+  padding-left: 7px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.tickets-table tfoot tr td {
+ background-color:transparent   /*#eaf5f9;*/
+}
+
+.tickets-container .tickets-table tbody tr td  {
+  text-align: left;
+}
+
+.tickets-container .tickets-table tfoot tr td  {
+  text-align: left; 
+}
+
+#Continue{
+  margin-top: 70px;
+}
+
+.tickets-input{
+  margin-top: 65px;
+ /* background-color:#F5FBFF;  #f3f9fb*/
+  width: 35%;
+  padding-bottom: 20px;
+}
+
+/*ALIGN TICKETS DATE,GUEST AND TIME SLOT TO LEFT*/
+.left-align {
+  text-align: left;
+  margin-left: 63px;
+  margin-top:20px ;
+}
+
+.timesDropdown{
+  list-style: none;
+  width: 170px;
+
+}
+
+.add-sub-button{
+  border-radius: 150%;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size:20px;
+}
+
+/*Table in confirmation pg*/
+
+.conf-table{
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  background-color: #F5F5F4;
+  margin-left: 500px;
+  margin-right: 450px;
+}
+
+.centered-content {
+  width: 450px; /* Set the desired width for the centered content */
+}
+
+/*confirmation pg responsive*/
+@media (max-width: 768px) {
+  .center-container {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    margin: 0 auto; /* Remove left and right margins */
+    margin-left:20px;
+    margin-right:20px;
+  }
+
+  .centered-content {
+    width: 100%; /* Take full width on smaller screens */
+  }
+
+  .ticketsPgs{
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+/* Larger screen responsive styles */
+@media (min-width: 1370px) {
+  .center-container {
+    flex-direction: row; /* Revert to horizontal layout on larger screens */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    min-height: 100px; /* Ensure full viewport height */
+    background-color: #F5F5F4;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+  }
+
+  .centered-content {
+    width: 100%; /* Take full width on larger screens */
+    max-width: 450px; /* Set a max-width to avoid content stretching */
+  }
+
+  .ticketsPgs {
+    margin: 0 auto; /* Center the content horizontally */
+    max-width: 1370px; /* Set a max-width to match centered-content */
+  }
+} 
