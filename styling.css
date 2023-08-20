@@ -205,14 +205,59 @@ header label {  /*to style menu button in hamburger menu*/
 }
 
 .intro{ /*for intro para in home pg*/
-	margin:45px;
+	margin:50px;
 }
 
+.intro p{
+  text-align: left;
+}
+
+.intro .list{ /*to center the lists */
+  list-style-position: inside; /*position bullet points*/
+  /*text-align:center;*/
+  }
+
+  .intro .list li{
+    text-align: left;
+  }
+
+  @media (min-width: 728px) {
+    /* Apply styles for large screens (1024px and above) */
+    .intro .list li {
+      margin-left: 470px; /* Adjust the margin value as needed */
+    }
+  }
 
 .visit{ /*padding for the two links that lead to kosgoda and bentota hatchery in threats to turtle pg*/
 	padding-bottom:20px;
 }
 
+@media (min-width: 728px) {
+  .tickets-button{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 30px;
+    font-size: 20px;
+    background-color:  #14a7a7;
+    padding:8px;
+  }
+
+  .tickets-button a{
+    color:#eaf5f9;
+    font-size: 20px;
+    letter-spacing: 2px; 
+  }
+
+  .tickets-button a:hover{
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 728px) {
+  .tickets-button {
+    display: none; /* Hide the button */
+  }
+}
 
 .center{ /*center images */
   display: block;
@@ -408,11 +453,6 @@ font-size:20px;
   font-size:25px;
 }
 
-
-.lists{ /*to center the lists */
-list-style-position: inside; /*position bullet points*/
-text-align:center;
-}
 
 a{
 color:#3CBCBC; /*for the color of the hyperlinks including quick links on footer*/
@@ -765,7 +805,7 @@ padding-bottom:20px;
 }
 
 .tickets-top{
-  background-color:teal;
+  background-color:#14a7a7;
   height:auto;
 }
 
@@ -805,7 +845,7 @@ button{
 }
 
 #Continue{
-  background-color:  #009999;
+  background-color:  #14a7a7;
   color:#eaf5f9;
   padding:10px;
   border-radius:5px;
@@ -1072,4 +1112,4 @@ button{
     margin: 0 auto; /* Center the content horizontally */
     max-width: 1370px; /* Set a max-width to match centered-content */
   }
-} 
+}
