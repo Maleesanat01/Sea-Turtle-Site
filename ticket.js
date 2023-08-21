@@ -91,9 +91,9 @@ document.addEventListener('alpine:init', () => {
           },
       ],
 
-      selectedTimeSlots: [],
+      selectedTimeSlots: [], //array that holds indices of selected time slots
 
-      showTimes: false,
+      showTimes: false, //to control the select time slot option
 
       disablePastDate(){ 
         const dateInput = document.getElementById('date');
@@ -102,13 +102,13 @@ document.addEventListener('alpine:init', () => {
         dateInput.setAttribute('min', formattedDate);
       },
 
-      selectTimeSlot(index) {
+      selectTimeSlot(index) { //to ensure that time slots are selected consecutively
 
           // if index is already in array remove it from array
           if (this.selectedTimeSlots.includes(index)) {
               this.selectedTimeSlots = this.selectedTimeSlots.filter(item => item !== index);
 
-          } else {
+          } else { //else store the selected time slot index to the selectTimeSlots array
               let lastElement = this.selectedTimeSlots[this.selectedTimeSlots.length - 1];
 
               if (!this.selectedTimeSlots.length || index - 1 == lastElement) {
@@ -127,7 +127,7 @@ document.addEventListener('alpine:init', () => {
       },
 
 
-      calculate(Guest) {
+      calculate(Guest) { //to calcultae total price for each guest type
 
           let total = 0;
 
@@ -142,7 +142,7 @@ document.addEventListener('alpine:init', () => {
       },
 
       // function to calculate total payable
-      CalculateTotal(Guest) {
+      CalculateTotal(Guest) { 
 
         let totalPrice = 0;
 
