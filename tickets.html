@@ -63,7 +63,7 @@
             <input type="date" name="date" id="date" x-model="date" x-init="disablePastDate()">
         </div>
 
-        <div x-show="date">
+        <!--div x-show="date"-->
             <h3 for="timeslot">Select a Time</h3>
             <div>
                 <button x-on:click="showTimes = !showTimes">
@@ -80,9 +80,9 @@
                     </template>
                 </ul>
             </div>
-        </div>
+        <!--/div-->
 
-        <div x-show="selectedTimeSlots.length">
+        <!--div x-show="selectedTimeSlots.length"-->
           <h3 for="Guest">Add guests</h3>
           <template x-for="(Guest, index) in Guests" :key="index">
               <div>
@@ -96,7 +96,7 @@
                 </div>
               </div>
           </template>
-        </div>
+        <!--/div-->
 
         <div class="price-container">
           <h3 id="priceHeading">Price table</h3>
