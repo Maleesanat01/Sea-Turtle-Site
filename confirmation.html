@@ -40,7 +40,7 @@
         <li><a href="tickets.html">Tickets</a></li>
         <li><a href="details.html">Details</a></li>
         <li><a href="payment.html">Payment</a></li>
-        <li><a href="confirmation.html">Confirmation</a></li>
+        <li><a id="active-navlink" href="confirmation.html">Confirmation</a></li>
         <li><a href="aboutus.html">About Us</a></li>
       </ul>
     </nav>
@@ -118,7 +118,9 @@
           <tr class="reciept-table-guest">
               <td>
                 <span x-text="Guest.name"></span>
+                  x(
                 <span x-text="Guest.count"></span>
+                  )
               </td>    
               <td>
                 <span x-text="Guest.total"></span>
