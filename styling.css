@@ -67,9 +67,13 @@ header .nav ul li a { /*styling nav bar links*/
 }
 
 header .nav ul li a:hover { /*hover effects for nav links*/
-  text-decoration: underline;
-  color: #3CBCBC;
+  color:#3CBCBC;
 }
+
+#active-navlink{ /*active pg link styling*/
+  color:#3CBCBC;
+}
+
 
 header .nav ul li ul { /*sub nav links*/
   position: absolute;
@@ -458,7 +462,7 @@ a{
 color:#3CBCBC; /*for the color of the hyperlinks including quick links on footer*/
 text-decoration:none;
 }
-a:hover{
+.footer a:hover{
 	text-decoration: underline;
 }
 
