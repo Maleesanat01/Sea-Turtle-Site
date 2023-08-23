@@ -45,10 +45,10 @@ document.addEventListener('alpine:init', () => {
             this.countryCode = storedCountryCode;
         }
       
-  
-      const phoneInput = document.querySelector('.phone-input');
-      const iti = window.intlTelInput(phoneInput, {
-        initialCountry: storedCountryCode || 'auto',
+  //for country code drop down
+      const phoneInput = document.querySelector('.phone-input'); //select phone input field from html
+      const iti = window.intlTelInput(phoneInput, { //where user will input phone number
+        initialCountry: storedCountryCode || 'auto', //initial country code to be selected when pg is loaded (if already selected load from local storage else just auto)
         separateDialCode: true,
         utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js'
       });
