@@ -104,7 +104,7 @@ document.addEventListener('alpine:init', () => {
 
       selectTimeSlot(index) { //to ensure that time slots are selected consecutively
 
-          // if index is already in array remove it from array
+          // if index is already in array remove it from array to preevent duplicate of same time slot
           if (this.selectedTimeSlots.includes(index)) {
               this.selectedTimeSlots = this.selectedTimeSlots.filter(item => item !== index);
 
