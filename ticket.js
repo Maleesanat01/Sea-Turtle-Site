@@ -96,30 +96,33 @@ document.addEventListener('alpine:init', () => {
       showTimes: false, //to control the select time slot option
 
       disablePastDate(){ 
-        const dateInput = document.getElementById('date');
-        const currentDate = new Date();
-        const formattedDate = currentDate.toISOString().split('T')[0];
-        dateInput.setAttribute('min', formattedDate);
+        const dateInput = document.getElementById('date'); //fetches date input field in html
+        const currentDate = new Date(); //date object w current date 
+        const formattedDate = currentDate.toISOString().split('T')[0]; //fornat current date to ISO 8601 standard YYYY-MM-DDTHH:mm:ss.sssZ" and extract only the part b4 the 'T'
+        dateInput.setAttribute('min', formattedDate); //set min date that can be selected to the extracted date
       },
 
       selectTimeSlot(index) { //to ensure that time slots are selected consecutively
 
-          // if index is already in array remove it from array to preevent duplicate of same time slot
+          // if index is already in array remove it from array to allow for toggling the selection
           if (this.selectedTimeSlots.includes(index)) {
               this.selectedTimeSlots = this.selectedTimeSlots.filter(item => item !== index);
 
           } else { //else store the selected time slot index to the selectTimeSlots array
-              let lastElement = this.selectedTimeSlots[this.selectedTimeSlots.length - 1];
+             // Get the index of the last selected time slot 
+            let lastElement = this.selectedTimeSlots[this.selectedTimeSlots.length - 1];
 
+            // Check if the array is empty or if the selected index is exactly one more than the last selected index
               if (!this.selectedTimeSlots.length || index - 1 == lastElement) {
-                  this.selectedTimeSlots.push(index);
+                // Add the index to the selectedTimeSlots array  
+                this.selectedTimeSlots.push(index);
 
               } else {
                   alert('Please select consecutive time slots only');
               }
           }
 
-          // sorting selectedTimeSlots array
+          //sort array to ensure the time slots are in ascending order
           this.selectedTimeSlots = this.selectedTimeSlots.sort();
           this.TimeDuration = this.selectedTimeSlots.length;
 
@@ -127,13 +130,14 @@ document.addEventListener('alpine:init', () => {
       },
 
 
-      calculate(Guest) { //to calcultae total price for each guest type
+      calculate(Guest) { //to calculate total price for each guest type
 
           let total = 0;
 
           this.selectedTimeSlots.forEach((timeSlotIndex) => {
+             // For each selected time slot, calculate the total price based on guest type
 
-              // calculating total for each guest type
+              // calculating total for each guest type  // If the time slot is a peak time, use the Guest peak price; otherwise, use the  Guest normal price
               total += parseInt(Guest.count * (this.Times[timeSlotIndex].isPeak ? Guest.peak : Guest.normal));
           });
 
