@@ -164,6 +164,34 @@ header label {
   font-size:25px;
 }
 
+@media (min-width: 728px) {
+  .tickets-button{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 30px;
+    font-size: 20px;
+    background-color:  #14a7a7;
+    padding:8px;
+  }
+
+  .tickets-button a{
+    color:#eaf5f9;
+    font-size: 20px;
+    letter-spacing: 2px; 
+    text-decoration: none;
+  }
+
+  .tickets-button a:hover{
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 728px) {
+  .tickets-button {
+    display: none; /* Hide the button */
+  }
+}
+
 
 hr{
 	border-bottom: solid 949494;  /*break (a line displayed) after heading of page*/
