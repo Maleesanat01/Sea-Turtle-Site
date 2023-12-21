@@ -1,2 +1,3 @@
 # Sea-Turtle-Site
-WDOS Assignment 2- creating a website using HTML &amp; CSS
+Book tickets to Hikkaduwa turtle hatchery 
+Created using HTML, CSS & Alpine.js
