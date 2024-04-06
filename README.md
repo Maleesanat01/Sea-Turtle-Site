@@ -1,5 +1,6 @@
-<p align="Left">
-<h1>Turtle Nation 🐢</h1>
+<p align="center">
+  <img src="https://github.com/Maleesanat01/Sea-Turtle-Site/blob/main/turtleimages/tnlogo2.jpg" width="400">
+
 </p>
 
 ## Description
